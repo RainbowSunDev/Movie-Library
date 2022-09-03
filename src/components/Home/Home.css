@@ -1,0 +1,49 @@
+.home{
+    width: 100vw;
+    height:100vh;
+ 
+}
+
+.home .searchBar .background{
+    align-items: center;
+ /* position: absolute; */
+ left: 0px;
+ top: 0px;
+ z-index: -1;
+ width: 100%;
+ height: 75vh;
+ -webkit-filter: blur(3px); /* Safari 6.0 - 9.0 */
+
+ background-image: url("../Auth/bg1.jpg");
+ background-size: cover;
+ filter: blur(3px);
+}
+
+.navbar-expand-lg .navbar-collapse {
+    display: flex!important;
+    flex-basis: auto;
+    justify-content: space-between;
+}
+
+.searchBar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30vh;
+    align-items: center;
+    padding-top: 6rem;
+    
+}
+.d-flex
+{
+    width: 50vw;
+}
+
+.home .container{
+
+    margin-top: 42vh;
+}
+
+.container Card{
+    background-color: #16b57f;
+}
