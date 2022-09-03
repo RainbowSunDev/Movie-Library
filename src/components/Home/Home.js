@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Navbar, Card } from "react-bootstrap";
+import { Button, Navbar, Card, Dropdown, DropdownButton } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import OffcanvasExample from "./TopNav";
 import { useNavigate } from "react-router";
@@ -74,10 +74,18 @@ const [favList, setFavList]=useState([]);
           <h4 style={{color:"#fafafa"}}>
             {value.Title}-{value.Year}</h4>
           </Card.Text>
+
+          <div className="buttonCard">
           <Button id={value.Title} style={{backgroundColor:"#16b57f", color:"black"}} onClick={addFavHandler}>Add to⭐</Button>
+          <DropdownButton id="dropdown-basic-button" title="">
+            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+          </DropdownButton>
+          </div>
         </Card.Body>
       </Card>
-    
+        
      </div>
       );
      })} 

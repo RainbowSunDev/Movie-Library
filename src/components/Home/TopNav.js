@@ -5,7 +5,17 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import "./TopNav.css"
+import {useState} from "react";
+import Example from "./Modal"
+
+
 function OffcanvasExample({handleLogout, favList}) {
+
+  const [openModal, setOpenModal]=useState(false);
+  const newPlaylistHandler=()=>{
+    !openModal?setOpenModal(true):setOpenModal(false);
+
+  }
   return (
     <div className='topn'>
       {['xl'].map((expand) => (
@@ -34,28 +44,31 @@ function OffcanvasExample({handleLogout, favList}) {
                   >
    
                   {favList.map((fav)=>
-                  <NavDropdown.Item  href="#action3">{fav}</NavDropdown.Item>
+                  <NavDropdown.Item >{fav}</NavDropdown.Item>
                   )}
                     
                     
                     <NavDropdown.Divider style={{backgroundColor:"#16b57f"}}/>
-                    <NavDropdown.Item href="#action5">
-                      Add Here!
+                    <NavDropdown.Item onClick={newPlaylistHandler}>
+                      Add new playlist
                     </NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
 
                 <div className="d-grid gap-2">
-        <Button variant="primary"  onClick={handleLogout} style={{width:"8rem",backgroundColor:"#16b57f"}}>
-          Log out
-        </Button>
-    </div>
+                    <Button variant="primary"  onClick={handleLogout} style={{width:"8rem",backgroundColor:"#16b57f"}}>
+                      Log out
+                    </Button>
+                </div>
                
               </Offcanvas.Body>
             </Navbar.Offcanvas>
+            {openModal && <Example newPlaylistHandler={newPlaylistHandler}/>}
           </Container>
         </Navbar>
       ))}
+
+      
     </div>
   );
 }

@@ -47,3 +47,10 @@
 .container Card{
     background-color: #16b57f;
 }
+
+.buttonCard{
+width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
