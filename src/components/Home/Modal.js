@@ -3,18 +3,18 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Form } from 'react-bootstrap';
 
-function Example({newPlaylistHandler}) {
+function Example({newPlaylistHandler, setAllPlaylists}) {
   const [show, setShow] = useState(true);
   
   const handleClose = () => setShow(false);
 const [newPlay, setNewPlay]=useState("")
 
-const [allPlaylists, setAllPlaylists]=useState([]);
-const [privacy, setprivacy]=useState(false);
+
+const [privacy, setprivacy]=useState({status:false});
   const setPrivacyHandler=(event)=>{
     
-    !privacy?setprivacy(false):setprivacy(true);
-    console.log(privacy)
+    setprivacy({ ...privacy, [event.target.name]: event.target.checked });
+
   }
 
   const onChangePlayHandler=(event)=>{
@@ -22,8 +22,10 @@ const [privacy, setprivacy]=useState(false);
     
   }
 
-  const onNewPlaylist=()=>{
-    setNewPlay(current => [...current, newPlay]);
+  const onNewPlaylist=(obj)=>{
+    
+    setAllPlaylists(current => [...current, obj]);
+    
     
   }
   return (
@@ -51,17 +53,18 @@ const [privacy, setprivacy]=useState(false);
         className="mt-4"
         type="switch"
         label="Make it private"
-        
+        name="status"
+        checked={privacy.status}
         onChange={setPrivacyHandler}
       />
         </Form.Group>
        <Modal.Footer>
-          <Button variant="secondary" onClick={function(){handleClose();onNewPlaylist();}}>
+          <Button variant="secondary" onClick={function(){newPlaylistHandler(); handleClose();}}>
             Close
           </Button>
           <Button variant="primary" style={{backgroundColor:"#16b57f"}} onClick={function(){
             newPlaylistHandler();
-            onNewPlaylist();
+            onNewPlaylist({name:newPlay, pub:privacy.status, movies:[""]});
             handleClose();
           }}>Create</Button>
           </Modal.Footer> 

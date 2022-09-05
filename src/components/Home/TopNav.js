@@ -7,11 +7,26 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import "./TopNav.css"
 import {useState} from "react";
 import Example from "./Modal"
+import MovieList from './MovieList';
 
 
-function OffcanvasExample({handleLogout, favList}) {
-
+function OffcanvasExample({handleLogout, favList, setAllPlaylists, allPlaylists}) {
+ 
   const [openModal, setOpenModal]=useState(false);
+  const [openList, setOpenList]= useState(false);
+const [activePlay, setActivePlay]=useState([])
+
+  const openListHandler=(play)=>{
+    const arr=allPlaylists.map((list)=>{
+      if(list.name===play){
+        return list.movies;
+      }
+    })
+    setActivePlay(arr)
+    console.log(arr)
+    !openList?setOpenList(true):setOpenList(false);
+  }
+
   const newPlaylistHandler=()=>{
     !openModal?setOpenModal(true):setOpenModal(false);
 
@@ -39,12 +54,12 @@ function OffcanvasExample({handleLogout, favList}) {
                   <Nav.Link href="#action2">Link</Nav.Link> */}
                   <NavDropdown
                     
-                    title="Favourites⭐"
+                    title="Playlists⭐"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
    
-                  {favList.map((fav)=>
-                  <NavDropdown.Item >{fav}</NavDropdown.Item>
+                  {allPlaylists.map((fav)=>
+                  <NavDropdown.Item onClick={()=>{openListHandler(fav.name)}}>{fav.name}</NavDropdown.Item>
                   )}
                     
                     
@@ -54,6 +69,8 @@ function OffcanvasExample({handleLogout, favList}) {
                     </NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
+                
+                
 
                 <div className="d-grid gap-2">
                     <Button variant="primary"  onClick={handleLogout} style={{width:"8rem",backgroundColor:"#16b57f"}}>
@@ -63,7 +80,8 @@ function OffcanvasExample({handleLogout, favList}) {
                
               </Offcanvas.Body>
             </Navbar.Offcanvas>
-            {openModal && <Example newPlaylistHandler={newPlaylistHandler}/>}
+            {openModal && <Example newPlaylistHandler={newPlaylistHandler} setAllPlaylists={setAllPlaylists}/>}
+            {openList&& <MovieList setOpenList={setOpenList} activePlay={activePlay}/>}
           </Container>
         </Navbar>
       ))}

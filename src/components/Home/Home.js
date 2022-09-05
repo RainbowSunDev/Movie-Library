@@ -11,9 +11,10 @@ const Home = () => {
 const [search, setSearch]= useState(); //keyword searched
   const [movies, setMovies]= useState([]); //response 
 const [favList, setFavList]=useState([]);
+const [allPlaylists, setAllPlaylists]=useState([{name:"Favorites", pub:true, movies:["Placeholder "]}]);
   const addFavHandler=(event)=>{
     setFavList((current => [...current, event.target.id]))
-    console.log(favList)
+    //console.log(favList)
   }
 
   const fetchMovieHandler=(event)=>{
@@ -22,7 +23,7 @@ const [favList, setFavList]=useState([]);
     .then((response)=>{
       // console.log(response.data.Search);
       setMovies(response.data.Search)
-      console.log(movies)
+     // console.log(movies)
     });
   }
 
@@ -42,12 +43,30 @@ const [favList, setFavList]=useState([]);
     }
   };
 
+  const setNewMovieHandler=(curplay, val)=>{
+    
+    setAllPlaylists(current =>
+      current.map(obj => {
+       //console.log(obj.name)
+        if (obj.name === curplay) {
+          //console.log(event)
+          const newMovieAddition= obj.movies.concat(val)
+          
+          return {...obj, movies:newMovieAddition };
+        }
+
+        return obj;
+      }),
+    );
+    console.log(allPlaylists)
+    
+  }
 
   return (
     <div className="home">
    
      {/* <Button onClick={fetchMovie}>Fetch!</Button> */}
-    <OffcanvasExample handleLogout={handleLogout} favList={favList}/>
+    <OffcanvasExample handleLogout={handleLogout} setAllPlaylists={setAllPlaylists} allPlaylists={allPlaylists} favList={favList}/>
     <div className="searchBar">
     <div className="background"/>
     <h1 style={{color:"white", marginBottom:"2rem"}}>Search movies and more!</h1>
@@ -76,11 +95,15 @@ const [favList, setFavList]=useState([]);
           </Card.Text>
 
           <div className="buttonCard">
-          <Button id={value.Title} style={{backgroundColor:"#16b57f", color:"black"}} onClick={addFavHandler}>Add to⭐</Button>
+          <Button id={value.Title} style={{backgroundColor:"#16b57f", color:"black"}} onClick={function(){setNewMovieHandler('Favourites', value.Title);}}>Add to⭐</Button>
+
           <DropdownButton id="dropdown-basic-button" title="">
-            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+          {allPlaylists.map((fav)=>
+            <Dropdown.Item id={value.Title} onClick={function(){setNewMovieHandler(fav.name, value.Title);}}>{fav.name}</Dropdown.Item>
+                  )}
+            {/* <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
             <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
           </DropdownButton>
           </div>
         </Card.Body>
