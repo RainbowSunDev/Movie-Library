@@ -5,11 +5,17 @@ import { Form } from 'react-bootstrap';
 
 function Example({newPlaylistHandler}) {
   const [show, setShow] = useState(true);
-
+  
   const handleClose = () => setShow(false);
 const [newPlay, setNewPlay]=useState("")
 
 const [allPlaylists, setAllPlaylists]=useState([]);
+const [privacy, setprivacy]=useState(false);
+  const setPrivacyHandler=(event)=>{
+    
+    !privacy?setprivacy(false):setprivacy(true);
+    console.log(privacy)
+  }
 
   const onChangePlayHandler=(event)=>{
     setNewPlay(event.target.value)
@@ -37,7 +43,7 @@ const [allPlaylists, setAllPlaylists]=useState([]);
         </Modal.Header>
         <Form.Group className="m-3 px-3" controlId="formBasicEmail">
         <Form.Label>Playlist name</Form.Label>
-        <Form.Control type="email" placeholder="Enter name here" onChange={onChangePlayHandler}/>
+        <Form.Control placeholder="Enter name here" onChange={onChangePlayHandler}/>
         <Form.Text className="text-muted">
           Playlists are public by default.
         </Form.Text>
@@ -45,6 +51,8 @@ const [allPlaylists, setAllPlaylists]=useState([]);
         className="mt-4"
         type="switch"
         label="Make it private"
+        
+        onChange={setPrivacyHandler}
       />
         </Form.Group>
        <Modal.Footer>
