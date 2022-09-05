@@ -1,5 +1,15 @@
-# Getting Started with Create React App
+# Movie Library App🎥
+  <a href="#"><img alt="Firebase" src="https://img.shields.io/badge/Firebase-yellow.svg?logo=firebase&logoColor=white"></a>
+    <a href="#"><img alt="React" src="https://img.shields.io/badge/React-blue.svg?logo=react&logoColor=white"></a>
+      <a href="#"><img alt="Bootstrap" src="https://img.shields.io/badge/Bootstrap-purple.svg?logo=bootstrap&logoColor=white"></a>
 
+## Deployed on Firebase!🔥
+
+
+
+- Fetching movie data from OMDI API
+  
+- 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
