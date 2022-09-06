@@ -10,6 +10,9 @@
 
 - Fetching movie data from OMDI API - [http://www.omdbapi.com/](http://www.omdbapi.com/)
 - Firebase authentication - Signup using email & password or **Gmail** 
+- After login you can search any movie with keyword, click search and go!
+- Add them to playlists OR
+- Create a playlist via playlist dropdown in the navbar above.
 
 ## I like to structure app into components before I start- [Figma file](https://www.figma.com/file/VaHuoHVS1AvqUD1RlupiWY/Movie-app?node-id=0%3A1) 
 ![image](https://user-images.githubusercontent.com/59767187/188609664-604e022c-f092-4a15-ab17-d62ca7a471b3.png)
