@@ -1,15 +1,20 @@
 # Movie Library App🎥
   <a href="#"><img alt="Firebase" src="https://img.shields.io/badge/Firebase-yellow.svg?logo=firebase&logoColor=white"></a>
     <a href="#"><img alt="React" src="https://img.shields.io/badge/React-blue.svg?logo=react&logoColor=white"></a>
+    <a href="#"><img alt="Router" src="https://img.shields.io/badge/Router-red.svg?logo=router&logoColor=white"></a>
       <a href="#"><img alt="Bootstrap" src="https://img.shields.io/badge/Bootstrap-purple.svg?logo=bootstrap&logoColor=white"></a>
+    <a href="#"><img alt="Netlify" src="https://img.shields.io/badge/Netlify-blue.svg?logo=netlify&logoColor=white"></a>
 
-## Deployed on Firebase!🔥
+## [Deployed on Netlify!🔥](https://631715a76702a7389789dfd9--visionary-phoenix-c7fbfa.netlify.app/)
 
 
+- Fetching movie data from OMDI API - [http://www.omdbapi.com/](http://www.omdbapi.com/)
+- Firebase authentication - Signup using email & password or **Gmail** 
 
-- Fetching movie data from OMDI API
-  
-- 
+## I like to structure app into components before I start- [Figma file](https://www.figma.com/file/VaHuoHVS1AvqUD1RlupiWY/Movie-app?node-id=0%3A1) 
+![image](https://user-images.githubusercontent.com/59767187/188609664-604e022c-f092-4a15-ab17-d62ca7a471b3.png)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
